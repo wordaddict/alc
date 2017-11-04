@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
 const _ = require('lodash');
 
-var {mongoose} - require('./db/mongoose');
+var {mongoose} = require('./db/mongoose');
 var {Resource} = require('./models/resources');
 var {User} = require('./models/users');
 var {authenticate} = require('./middlewares/authenticate');
