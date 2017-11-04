@@ -1,3 +1,5 @@
+require('./config/config');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
@@ -29,16 +31,16 @@ app.get('/resources', authenticate, (req, res) => {
   Resource.find({
     _creator: req.user._id
   }).then((resources) => {
-    res.status(200).send({resorces})
+    res.status(200).send({resources})
   }, (e) => {
     res.status(400).send(e);
-  })
+  });
 });
 
 app.get('/resources/:id', authenticate, (req, res) => {
   var id = req.params.id
 
-  if (!ObjectID.isValid) {
+  if (!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
 
@@ -49,14 +51,17 @@ app.get('/resources/:id', authenticate, (req, res) => {
     if(!resource) {
       return res.status(404).send();
     }
+
     res.send({resource});
-  }).catch(e) => res.status(400).send();
+  }).catch((e) =>{
+    res.status(400).send();
+  });
 });
 
 app.delete('/resources/:id', authenticate, (req, res) => {
-  var id = req.params.id
+  var id = req.params.id;
 
-  if (!ObjectID.isValid) {
+  if (!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
   Resource.findOneAndRemove({
@@ -67,15 +72,17 @@ app.delete('/resources/:id', authenticate, (req, res) => {
       return res.status(400).send();
     }
 
-    res.status(200).send(resource);
-  }).catch(e) => res.status(400).send();
+    res.status(200).send({resource});
+  }).catch((e) => {
+    res.status(400).send();
+  });
 });
 
-app.patch('/resource/:id', authenticate, (req, res) => {
+app.patch('/resources/:id', authenticate, (req, res) => {
   var id = req.params.id;
   var body = _.pick(req.body, ['title', 'body']);
 
-  if (!ObjectID.isValid) {
+  if (!ObjectID.isValid(id)) {
     return res.status(404).send();
   }
 
@@ -94,7 +101,9 @@ app.patch('/resource/:id', authenticate, (req, res) => {
       return res.status(404).send();
     }
     res.status(200).send({resource});
-  }).catch(e) => res.status(404).send();
+  }).catch((e) => {
+    res.status(400).send();
+  });
 });
 
 app.post('/users', (req, res) => {
@@ -139,3 +148,5 @@ app.delete('users/me/token', authenticate, (req, res) => {
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
 });
+
+module.exports = {app};
