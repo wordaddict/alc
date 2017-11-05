@@ -1,0 +1,86 @@
+
+html(lang='en')
+  head
+    title ALC
+    // for-mobile-apps
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    meta(name='keywords', content='Snow Coming Soon Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,\
+    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design')
+    script(type='application/x-javascript').
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+      function hideURLbar(){ window.scrollTo(0,1); }
+    // //for-mobile-apps
+    // //custom-theme
+    link(href='css/style_1.css', rel='stylesheet', type='text/css', media='all')
+    link(href='../web/css/font-awesome.css', rel='stylesheet')
+    // js
+    script(type='text/javascript', src='js/jquery-2.1.4.min.js')
+
+    link(href='//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i', rel='stylesheet')
+    link(href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900', rel='stylesheet', type='text/css')
+  body
+    script(src='js/jquery.vide.min.js')
+    // banner
+
+    div(data-vide-bg='video/snow')
+      .center-container
+        .main
+          h1 ANDELA SCHOOL
+          | &#x9;&#x9;&#x9;&#x9;&#x9;
+          .banner-right
+          
+            .newsletter
+              h2(style='font-size: 50px') Write an Article to the school resource.
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              form(action='/resources', method='post')
+                input(type='text', name='title', required='', placeholder='Title of your Article', style='height: 30px;')
+                input(type='text', name='body', required='', placeholder='Body of your article', style='height: 30px;')
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                input(type='submit', value='Submit')
+                  
+
+            .agileinfo-social-grids
+              ul
+                li
+                  a(href='#')
+                    i.fa.fa-facebook
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                li
+                  a(href='#')
+                    i.fa.fa-twitter
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                li
+                  a(href='#')
+                    i.fa.fa-rss
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                li
+                  a(href='#')
+                    
+                    i.fa.fa-vk
+                      
+          | &#x9;&#x9;&#x9;&#x9;
+          .w3layouts_copy_right
+            .container
+            if _id
+              li
+                a(href='/resources/:id')
+            if _id
+              p _id
+              a.btn.btn-xl.logout(href='/logout') Logout
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              a.btn.btn-xl.signup(href='/signup') Sign up
+            else
+              a.btn.btn-xl.login(href='/login') Login
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              a.btn.btn-xl.signup(href='/signup') Sign up
+              p &copy; 2017. All rights reserved | Design by Adeyinka
+
+
+    script(src='index/js/agency.min.js')
+
+    script(type='text/javascript', src=' js/moment.js')
+    | &#x9;
+    script(type='text/javascript', src=' js/moment-timezone-with-data.js')
+    | &#x9;
+    script(type='text/javascript', src='js/timer.js')

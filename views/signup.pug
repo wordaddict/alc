@@ -1,0 +1,61 @@
+doctype html
+html(lang='en')
+  head
+    title Account Register Form
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    meta(name='keywords', content='Account Register Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements')
+    script(type='application/x-javascript').
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+      function hideURLbar(){ window.scrollTo(0,1); }
+    link(rel='stylesheet', href='css/style.css', type='text/css', media='all')
+    link(rel='stylesheet', href='css/font-awesome.css')
+    link(href='//fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,latin-ext,vietnamese', rel='stylesheet')
+  body
+    .w3ls-header
+      .header-main(style='margin-top: 20px')
+        h2 Create Account
+        .header-bottom
+          .header-right.w3agile
+            .header-left-bottom.agileinfo
+              form(action='/signup', method='post')
+                .icon1
+                  i.fa.fa-user(aria-hidden='true')
+                  input(type='text', placeholder='Your Full Name', name='fullname', required='')
+                .icon1
+                  i.fa.fa-envelope(aria-hidden='true')
+                  input(type='email', placeholder='Your Email', name='email', required='')
+                .icon1
+                  i.fa.fa-phone(aria-hidden='true')
+                  input(type='tel', placeholder='Phone Number', name='phonenumber', required='')
+                .icon1
+                  i.fa.fa-lock(aria-hidden='true')
+                  input(type='password', placeholder='Password', name='password', required='')
+                .login-check
+                  label.checkbox
+                    input(type='checkbox', name='checkbox', checked='')
+                    i
+                    |  I Accept to the
+                    a(href='#') Terms & Conditions
+                .bottom
+                  input(type='submit', value='Create account')
+                .social.w3layouts
+                  .heading
+                    h5 Or sign in with :
+                    .clear
+                  .icons
+                    a(href='#')
+                      i.fa.fa-facebook-square(aria-hidden='true')
+                    a(href='#')
+                      i.fa.fa-twitter-square(aria-hidden='true')
+                    a(href='#')
+                      i.fa.fa-linkedin-square(aria-hidden='true')
+                    a(href='#')
+                      i.fa.fa-google-plus-square(aria-hidden='true')
+                    .clear
+                  .clear
+                  p
+                    | Already a member?
+                    a(href='/login') Login
+    .copyright
+      p © 2017 Account Register Form. All rights reserved | Design by Adeyinka Micheal

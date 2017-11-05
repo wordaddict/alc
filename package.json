@@ -15,11 +15,14 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.33",
     "mongoose": "^4.10.8",
+    "morgan": "^1.9.0",
     "pug": "^2.0.0-rc.4",
     "validator": "^9.1.1",
     "validators": "^0.3.1"

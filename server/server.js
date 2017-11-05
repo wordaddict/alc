@@ -1,18 +1,62 @@
+"use strict";
+
 require('./config/config');
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
 const _ = require('lodash');
+const path = require('path');
+const logger = require('morgan');
+const pug = require('pug');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 var {mongoose} = require('./db/mongoose');
 var {Resource} = require('./models/resources');
 var {User} = require('./models/users');
 var {authenticate} = require('./middlewares/authenticate');
+// var {router} = require('./server/router.js');
 
 var app = express();
 const port = process.env.PORT || 3000;
+
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'pug');
+
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(logger("dev"));
+app.use(cookieParser());
+app.use(session({
+  secret: "TJBJHDH984H=hfvnv873yhfh",
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.get('/', (req, res) => {
+  User.find({}, function (err, users) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("index", {
+        title: 'Articles',
+        users,
+        Resource,
+      })
+    }
+  })
+  ;
+});
+
+app.get('/login', (req, res) => {
+  res.render("login");
+});
+
+app.get('/signup', (req, res) => {
+  res.render("signup");
+});
 
 app.post('/resources', authenticate, (req, res) => {
   var resource = new Resource({
@@ -144,6 +188,9 @@ app.delete('users/me/token', authenticate, (req, res) => {
   });
 });
 
+app.get('/logout', (req, res) => {
+  res.redirect('/users/login');
+});
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
