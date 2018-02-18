@@ -60,6 +60,9 @@ app.get("/signup", (req, res) => {
 });
 
 app.post("/resources", (req, res) => {
+  var title = req.body.title;
+  var body = req.body.body;
+
   var resource = new Resource({
     title: req.body.title,
     body: req.body.body
