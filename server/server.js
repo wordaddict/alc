@@ -59,11 +59,10 @@ app.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-app.post("/resources", authenticate, (req, res) => {
+app.post("/resources", (req, res) => {
   var resource = new Resource({
     title: req.body.title,
-    body: req.body.body,
-    _creator: req.user._id
+    body: req.body.body
   });
   resource.save().then(
     doc => {
